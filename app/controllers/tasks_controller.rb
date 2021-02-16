@@ -10,6 +10,8 @@ class TasksController < ApplicationController
         erb :'tasks/show.html'
     end
 
+    
+
     # get '/users/:id' do
     #     @user = User.find_by(params[:id])
     #     erb :'tasks/show.html'

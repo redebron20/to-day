@@ -3,15 +3,15 @@
 <a href="/lists/new"><button type="button">Create A New List</button></a>
 <br><br>
 
-<div>
-    <h2>Here's your current list:</h2>
+
+    <h2>Here's your current tasks:</h2>
         <% @user.lists.each do |list| %>
             <h2><%= list.name %></h2>
-            <%list.tasks.each do |task| %>
-                <ol>
-                <li><h6><%= task.name %></h6></li>
-                </ol>
+            <ol>
+            <%list.tasks.each do |task| %>                
+                <li><%= task.name %></li>
             <% end %>
+            </ol>
         <% end %>
-</div>
 
+<a class="button" href="/logout">Log out</a>

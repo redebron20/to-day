@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 
     get '/lists/new' do
         redirect_if_not_logged_in
-        erb :'/lists/new.html'
+        erb :'lists/new.html'
     end
 
     post '/lists' do
@@ -21,8 +21,9 @@ class ListsController < ApplicationController
 
     get '/lists/:id/edit' do
         redirect_if_not_logged_in
+        @list = List.find(params[:id])
 
-        erb :''
+        erb :'list/edit.html'
     end
 
 end

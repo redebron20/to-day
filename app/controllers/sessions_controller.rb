@@ -18,11 +18,7 @@ class SessionsController < ApplicationController
     end
 
     get '/logout' do
-        if session[:user_id] != nil
-          session.clear
-          redirect to '/sessions/login.html'
-        else
-          redirect to '/'
-        end
-      end
+      session.clear
+      redirect "/"
+    end
 end
