@@ -1,17 +1,23 @@
+
+
+<% if flash[:error] %>
+    <p><%= flash[:error] %> </p>
+<%end%>
+
 <h1>Sign Up</h1>
 <form method="post" action="/signup"><br>
 
 <div class="form-group">
 <label for="username">Username</label>
-<input type="text" name="username" placeholder="Your Username"><br><br>
+<input type="text" name="user[username]" id="username"><br><br>
 </div>
 
 <div class="form-group">
 <label for="password">Password</label>
-<input type="text" name="password" placeholder="Your Password"><br><br>
+<input type="text" name="user[password]" id="password"><br><br>
 </div>
 
-<input class="btn btn-primary" type="submit" name="submit" value="Sign Up!">
+<input class="btn btn-primary" type="submit" value="Sign Up!">
 </form>
 
 <br>

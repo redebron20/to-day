@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, ENV['SESSION_SECRET']
-    #register Sinatra::Flash
+    register Sinatra::Flash
   end
 
   get "/" do
@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def redirect_if_not_logged_in
-        redirect "/login" if !logged_in?
+      redirect "/login" if !logged_in?
     end
 
   end
