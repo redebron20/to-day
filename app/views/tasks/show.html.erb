@@ -1,14 +1,17 @@
 <h1>Hello <%= @user.username.capitalize %>! </h1>
 
 <a href="/lists/new"><button type="button">Create A New List</button></a>
+<br><br>
 
-<h3>Here's your current list</h3>
-    <% @user.lists.each do |list| %>
-
-        <h2><%= list.name %></h2>
-        <% list.tasks.each do |task| %>
-            <h4><%= task.name %></h4>
+<div>
+    <h2>Here's your current list:</h2>
+        <% @user.lists.each do |list| %>
+            <h2><%= list.name %></h2>
+            <%list.tasks.each do |task| %>
+                <ol>
+                <li><h6><%= task.name %></h6></li>
+                </ol>
+            <% end %>
         <% end %>
-    <% end %>
-
+</div>
 

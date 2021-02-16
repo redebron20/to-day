@@ -9,15 +9,20 @@ class ListsController < ApplicationController
         @user = current_user
     
         if !params["list"]["name"].empty?
-            list = @user.lists << List.create(params[:list])
+            list = @user.lists.create(params[:list])
         end
 
         if !params["task"]["name"].empty?
-            list.tasks << Task.create(params[:task])
+            task = list.tasks.create(params[:task])
         end
 
         erb :'tasks/show.html'
-
-
     end
+
+    get '/lists/:id/edit' do
+        redirect_if_not_logged_in
+
+        erb :''
+    end
+
 end
