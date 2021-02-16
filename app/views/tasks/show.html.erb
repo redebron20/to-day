@@ -1,10 +1,11 @@
+
 <h1>Hello <%= @user.username.capitalize %>! </h1>
 
 <a href="/lists/new"><button type="button">Create A New List</button></a>
 <br><br>
 
 
-    <h2>Here's your current tasks:</h2>
+    <h2>Your to-day's lists:</h2>
         <% @user.lists.each do |list| %>
             <h2><%= list.name %></h2>
             <ol>

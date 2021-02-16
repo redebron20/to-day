@@ -6,15 +6,15 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by(params[:user])
-        if logged_in?
-            flash[:success]="Account created!"
-            redirect '/tasks'
+        @user = User.find_by(:username => params["user"]["username"])
+        if @user && @user.authenticate(params["user"]["password"])
+          session["user_id"] = @user.id
+          flash[:success] = "Successfully logged in!"
+          redirect "/tasks"
         else
-            flash[:error]= user.errors.full_messages.to_sentence
-            redirect '/signup'
+          flash[:error] = "Invalid credentials"
+          redirect "/login"
         end
-         
     end
 
     get '/logout' do
