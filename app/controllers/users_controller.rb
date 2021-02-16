@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
-    # GET: /users/new
 
     get '/signup' do
         erb :'users/signup.html'
     end
-
 
     post '/signup' do
        
@@ -13,18 +11,17 @@ class UsersController < ApplicationController
         if user.valid?
             flash[:success]="Account created!"
             session[:user_id]=user.id
-            redirect "/users/#{user.id}"
+            redirect '/users/#{user.id}'
         else
             flash[:error]= user.errors.full_messages.to_sentence
             redirect '/signup'
         end
     end
 
-
-    get '/users/:id' do
-        @user = Users.find_by(params[:id])
-        erb :show
-    end
+    # get '/users/:id' do
+    #     @user = User.find_by(params[:id])
+    #     erb :'tasks/show.html'
+    # end
 
 
 
