@@ -7,9 +7,17 @@ class ListsController < ApplicationController
 
     post '/lists' do
         @user = current_user
-        list = @user.lists.create(params[:list])
-        task = list.tasks.create(params[:tasks])
+    
+        if !params["list"]["name"].empty?
+            list = @user.lists << List.create(params[:list])
+        end
+
+        if !params["task"]["name"].empty?
+            list.tasks << Task.create(params[:task])
+        end
 
         erb :'tasks/show.html'
+
+
     end
 end

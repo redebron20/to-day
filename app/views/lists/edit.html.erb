@@ -1,0 +1,17 @@
+
+        if list.valid?
+            flash[:success] = "Successfully created list!"
+            redirect "/tasks"
+        else
+            flash[:error] = list.errors.full_messages.join(", ")
+            redirect "/list/new"
+        end
+
+
+        # if !params["list"]["name"].empty?
+        #     list = @user.lists << List.create(params[:list])
+        # end
+
+        # if !params["task"]["name"].empty?
+        #     list.tasks << Task.create(params[:task])
+        # end
