@@ -1,0 +1,8 @@
+
+        if list.valid?
+            flash[:success] = "Successfully created list!"
+            redirect "/tasks"
+        else
+            flash[:error] = list.errors.full_messages.join(", ")
+            redirect "/list/new"
+        end
