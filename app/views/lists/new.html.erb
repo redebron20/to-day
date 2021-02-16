@@ -1,0 +1,14 @@
+<h1>Create a New List</h1>
+
+    <form method="post" action="/lists">
+        <label for="name">List Name</label>
+        <input type="text" id="name" name="list[name]"><br><br>
+
+        <label for="name">Add Your First Task</label>
+        <input type="text" id="task" name="list[][name]"><br><br>
+
+        <input type="submit" value="Create New List">
+    </form>
+
+
+    

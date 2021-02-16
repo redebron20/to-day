@@ -7,13 +7,13 @@ class TasksController < ApplicationController
         redirect_if_not_logged_in
         @user = current_user
         @lists = @user.lists
-        erb :'tasks/show'
-    end
-
-    get '/users/:id' do
-        @user = User.find_by(params[:id])
         erb :'tasks/show.html'
     end
+
+    # get '/users/:id' do
+    #     @user = User.find_by(params[:id])
+    #     erb :'tasks/show.html'
+    # end
 
     
 end

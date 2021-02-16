@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         if user.valid?
             flash[:success]="Account created!"
             session[:user_id]=user.id
-            redirect '/users/#{user.id}'
+            redirect '/tasks'
         else
             flash[:error]= user.errors.full_messages.to_sentence
             redirect '/signup'
@@ -22,7 +22,5 @@ class UsersController < ApplicationController
     #     @user = User.find_by(params[:id])
     #     erb :'tasks/show.html'
     # end
-
-
 
 end

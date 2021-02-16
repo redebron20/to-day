@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
     # GET: /sessions
     get '/login' do
-        redirect '/tasks'
+        redirect '/tasks' if logged_in?
         erb :'sessions/login.html'
     end
 
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         user = User.find_by(params[:user])
         if logged_in?
             flash[:success]="Account created!"
-            redirect
+            redirect '/tasks'
         else
             flash[:error]= user.errors.full_messages.to_sentence
             redirect '/signup'
