@@ -33,7 +33,6 @@ class ListsController < ApplicationController
     end
 
     patch '/lists/:id' do
-        binding.pry
         @list = List.find(params[:id])
         @list.update(params["list"])
 

@@ -1,1 +1,7 @@
-<h1>This is the Model's edit page.</h1>
+<h1>Edit Task</h1>
+<form method="post" action="/tasks/<%= @task.id %>">
+<input id="hidden" type="hidden" name="_method" value="patch">
+<input type="text" name="name" value="<%= @task.name %>">
+
+<input class="btn btn-primary" type="submit" name="edit" value="Edit">
+</form>

@@ -15,7 +15,7 @@ class TasksController < ApplicationController
         erb :'tasks/new.html'
     end
 
-    post '/tasks/new' do
+    post '/tasks' do
         Task.create(:name => params[:name], :list_id => params[:list_id])
         redirect '/tasks'
     end
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
     # task editing
     get '/tasks/:id/edit' do
         @task = Task.find_by_id(params[:id])
-        erb :'/tasks/edit'
+        erb :'/tasks/edit.html'
     end
 
     patch '/tasks/:id' do
@@ -32,6 +32,7 @@ class TasksController < ApplicationController
         @task.save
         redirect '/tasks'
     end
+
 
 
 
