@@ -22,13 +22,13 @@ class TasksController < ApplicationController
 
     # task editing
     get '/tasks/:id/edit' do
-        @task = Task.find_by_id(params[:id])
+        @task = Task.find(params[:id])
         erb :'/tasks/edit.html'
     end
 
     patch '/tasks/:id' do
-        @task = Task.find_by_id(params[:id])
-        @task.update(params[:task])
+        @task = Task.find(params[:id])
+        @task.update(:name => params[:name])
         redirect '/tasks'
     end
 
