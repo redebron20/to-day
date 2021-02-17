@@ -32,6 +32,11 @@ class TasksController < ApplicationController
         redirect '/tasks'
     end
 
+    get '/tasks/:id/delete' do
+        @task = Task.find_by_id(params[:id])
+        erb :'tasks/delete.html'
+    end
+
     delete '/tasks/:id' do 
         @task = Task.find(params[:id])
         @task.destroy
