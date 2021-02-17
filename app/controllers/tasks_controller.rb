@@ -7,6 +7,7 @@ class TasksController < ApplicationController
         erb :'tasks/show.html'
     end
 
+    # Builds new task associated with the LIST ID
     get '/tasks/new' do
         redirect_if_not_logged_in
         @user = current_user
@@ -18,6 +19,21 @@ class TasksController < ApplicationController
         Task.create(:name => params[:name], :list_id => params[:list_id])
         redirect '/tasks'
     end
+
+    # task editing
+    get '/tasks/:id/edit' do
+        @task = Task.find_by_id(params[:id])
+        erb :'/tasks/edit'
+    end
+
+    patch '/tasks/:id' do
+        @task = Task.find_by_id(params[:id])
+        @task.name = params[:name]
+        @task.save
+        redirect '/tasks'
+    end
+
+
 
     
 end
