@@ -1,8 +1,19 @@
 
-        if list.valid?
-            flash[:success] = "Successfully created list!"
-            redirect "/tasks"
-        else
-            flash[:error] = list.errors.full_messages.join(", ")
-            redirect "/list/new"
-        end
+<form method="post" action="/lists/<%=@list.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+    <label><h4>Edit List Name:</h4></label>
+    <input type="text" name="list[name]" value="<%=@list.name%>"><br><br>
+
+    <% @list.tasks.each do |task| %>
+        <label><h5>Edit Task:</h5></label>
+        <input type="text" name="list[task_id][]" id="task_<%=task.id%>" value="<%= task.name %>"><br>
+    <% end %>
+
+    <label>Add New Task:</label>   
+    <input type="text" name="task[name]" id="new_task">
+    <br>
+
+    <br>
+    <input class="btn btn-primary" type="submit" value="Update List">
+</form>
