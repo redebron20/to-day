@@ -17,3 +17,11 @@
     <br>
     <input class="btn btn-primary" type="submit" value="Update List">
 </form>
+
+<br>
+
+<form method="post" action="/lists/<%=@list.id%>">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input class="btn btn-primary" type="submit" value="Delete">
+<form>
+

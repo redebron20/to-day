@@ -1,14 +1,8 @@
-<% if flash[:error] %>
-    <div class="errors flash fatal">
-        <h4 class="error"><%= flash[:error] %></h4>
-    </div>
-<% end %>
-
 <h1>Create a New List</h1>
 
     <form method="post" action="/lists">
         <label for="name">List Name</label>
-        <input type="text" id="list_name" name="list[name]"><br><br>
+        <input type="text" id="list_name" name="name"><br><br>
 
         <label for="name">Add Your First Task</label>
         <input type="text" id="task_name" name="task[name]"><br><br>

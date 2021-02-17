@@ -5,7 +5,7 @@
 <br><br>
 
     <h2>Your to-day's lists:</h2>
-        <% @user.lists.each do |list| %>
+        <% @user.lists.all.each do |list| %>
             <h2><%= list.name %></h2>
             <a href="/lists/<%=list.id%>/edit">Edit List</a>
             <a href="/lists/<%=list.id%>/delete">Delete List</a>
@@ -15,10 +15,10 @@
                     <li><%= task.name %></li>
                     <a href="/tasks/<%= task.id %>/edit">Edit</a>
                     <a href="/tasks/<%= task.id %>/delete">Delete</a>
+                    
                 <% end %>
             </ol>
             <% end %>
 
-            
-
+        
 <a class="button" href="/logout">Log out</a>
