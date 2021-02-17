@@ -33,6 +33,7 @@ class ListsController < ApplicationController
     end
 
     patch '/lists/:id' do
+        binding.pry
         @list = List.find(params[:id])
         @list.update(params["list"])
 
@@ -45,7 +46,7 @@ class ListsController < ApplicationController
 
     get '/lists/:id/delete' do
         @list = List.find_by_id(params[:id])
-        erb :'lists/delete'
+        erb :'lists/delete.html'
     end
     
     delete '/lists/:id' do 

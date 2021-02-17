@@ -7,7 +7,7 @@
 
     <% @list.tasks.each do |task| %>
         <label><h5>Edit Task:</h5></label>
-        <input type="text" name="list[task_id][]" id="task_<%=task.id%>" value="<%= task.name %>"><br>
+        <input type="text" name="list[task][]" id="task_<%=task.name%>" value="<%= task.name %>"><br>
     <% end %>
 
     <label>Add New Task:</label>   
