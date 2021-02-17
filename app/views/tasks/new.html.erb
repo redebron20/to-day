@@ -1,16 +1,16 @@
-<h1>Add a New Task</h1>
+<h1>New Task</h1>
 
-    <form method="post" action="/tasks">
-        <label for="name">Task Name:</label>
-        <input type="text" id="task_name" name="task[name]"><br><br>
+<form method="post" action="/tasks/new">
+    <input type="text" name="name" placeholder="Task Name">
+    <br><br>
 
-        <label>Add To An Existing List</label><br>
-            <% @lists.each do |list| %>
-                <% if list.user_id == @user.id %>
-                <input type="checkbox" name="list_id" value=list_"<%=list.id%>"><%=list.name%><br>
-                <% end %>
-            <% end %>
-            <br>
-
-        <input type="submit" value="Add New Task">
-    </form>
+    <label>Add To An Existing List</label><br>
+    <% @lists.each do |list| %>
+        <% if list.user_id == @user.id %>
+        <input type="checkbox" name="list_id" value="<%=list.id%>"><%=list.name%><br>
+        <% end %>
+    <% end %>
+    <br>
+    
+    <input class="btn btn-primary" type="submit" name="create" value="Create">
+</form>

@@ -14,7 +14,10 @@ class TasksController < ApplicationController
         erb :'tasks/new.html'
     end
 
-
+    post '/tasks/new' do
+        Task.create(:name => params[:name], :list_id => params[:list_id])
+        redirect '/tasks'
+    end
 
     
 end
