@@ -3,33 +3,31 @@
     <head>
         <style>
         .content {
-            padding: 50px 70px 75px 100px;
+            padding: 50px 70px 75px 80px;
             }
         </style>
     </head>
 
     <body>
-        <div class="container">
-            <div class="content"
-                <h1>Sign Up</h1>
-                <form method="post" action="/signup"><br>
-
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="user[username]" id="username"><br><br>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="text" name="user[password]" id="password"><br><br>
-                    </div>
-
-                    <input class="btn btn-outline-dark" type="submit" value="Sign Up!">
-                </form>
+        <div class="container content">
+            <form method="post" action="/signup"><br>
+                <div class="form-group">
+                    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+                    <label for="username" class="visually-hidden">Username</label>
+                    <input type="text" name="user[username]" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="visually-hidden">Password</label>
+                    <input type="text" name="user[password]" placeholder="Password">
+                </div>
+                
+                <br>
+                <input class="btn btn-outline-dark" type="submit" value="Sign up">
+            </form>
 
                 <br><br>
                 <p>Or you can <a href="/login">log in here.</a></p>
-            </div>
+            
         </div>
     </body>
 </html>

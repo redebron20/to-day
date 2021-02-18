@@ -3,38 +3,39 @@
     <head>
         <style>
         .content {
-            padding: 50px 70px 75px 100px;
+            padding: 50px 70px 75px 80px;
             }
         </style>
     </head>
 
     <body>
-        <div class="container">
-            <div class="content"
+        <div class="container content">
             <form method="post" action="/login">
-            <div class="form-group">
-                <h1 class="h3 mb-3 fw-normal">Please log in</h1>
-                <label for="username" class="visually-hidden">Username</label>
-                <input type="text" name="user[username]" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label for="password" class="visually-hidden">Password</label>
-                <input type="text" name="user[password]" placeholder="Password">
-            </div>
-        
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-        
-            <button class="btn btn-outline-dark" type="submit">Log in</button>
+                <div class="form-group">
+                    <h1 class="h3 mb-3 fw-normal">Please log in</h1>
+                    <label for="username" class="visually-hidden">Username</label>
+                    <input type="text" name="user[username]" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="visually-hidden">Password</label>
+                    <input type="text" name="user[password]" placeholder="Password">
+                </div>
+                
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                
+                <input class="btn btn-outline-dark" type="submit" value="Log in">
             </form>
         
-        <br><br>
-        <p>Or you can <a href="/signup">sign up here.</a></p>
-            </div>
+            <br><br>
+            <p>Or you can <a href="/signup">sign up here.</a></p>
+            
         </div>
     </body>
 </html>
+
+
 
