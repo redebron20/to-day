@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :"tasks/index.html"
+    erb :"/index.html"
   end
 
   error Sinatra::NotFound do
