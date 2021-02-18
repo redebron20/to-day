@@ -1,24 +1,36 @@
-<% if flash[:error] %>
-    <div class="errors flash fatal">
-        <h4 class="error"><%= flash[:error] %></h4>
-    </div>
-<% end %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .content {
+            padding: 50px 70px 75px 100px;
+            }
+        </style>
+    </head>
 
-<h1>Sign Up</h1>
-    <form method="post" action="/signup"><br>
+    <body>
+        <div class="container">
+            <div class="content"
+                <h1>Sign Up</h1>
+                <form method="post" action="/signup"><br>
 
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="user[username]" id="username"><br><br>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="user[username]" id="username"><br><br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" name="user[password]" id="password"><br><br>
+                    </div>
+
+                    <input class="btn btn-outline-dark" type="submit" value="Sign Up!">
+                </form>
+
+                <br><br>
+                <p>Or you can <a href="/login">log in here.</a></p>
+            </div>
         </div>
+    </body>
+</html>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" name="user[password]" id="password"><br><br>
-        </div>
-
-        <input class="btn btn-primary" type="submit" value="Sign Up!">
-    </form>
-
-<br>
-<p>Or you can <a href="/login">log in here.</a></p>
