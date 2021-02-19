@@ -1,27 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .content {
+            padding: 50px 70px 75px 80px;
+            }
+        </style>
+    </head>
 
-<form method="post" action="/lists/<%=@list.id%>">
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <body>
+        <div class="container content">
+            <form method="post" action="/lists/<%=@list.id%>">
+              <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-    <label><h4>Edit List Name:</h4></label>
-    <input type="text" name="list[name]" value="<%=@list.name%>"><br><br>
+              <h4>Edit List Name:</h4>
+              <input type="text" name="list[name]" value="<%=@list.name%>"><br><br>
 
-    <% @list.tasks.each do |task| %>
-        <label><h5>Edit Task:</h5></label>
-        <input type="text" name="list[task][]" id="task_<%=task.name%>" value="<%= task.name %>"><br>
-    <% end %>
+              <label>Add New Task:</label>   
+              <input type="text" name="task[name]" id="new_task">
+              <br>
 
-    <label>Add New Task:</label>   
-    <input type="text" name="task[name]" id="new_task">
-    <br>
+              <br>
+              <input type="submit" class="btn btn-outline-dark" value="Update list">
+            </form>
+            <br>
 
-    <br>
-    <input class="btn btn-primary" type="submit" value="Update List">
-</form>
+            <form method="post" action="/lists/<%=@list.id%>">
+              <input id="hidden" type="hidden" name="_method" value="delete">
+              <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete list">
+            <form>
 
-<br>
+        </div>
+    </body>
+</html>
 
-<form method="post" action="/lists/<%=@list.id%>">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input class="btn btn-primary" type="submit" value="Delete">
-<form>
 

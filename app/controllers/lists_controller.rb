@@ -22,12 +22,12 @@ class ListsController < ApplicationController
     end
 
     patch '/lists/:id' do
-    
+       
         @list = List.find(params[:id])
-        @list.update(:name => params[:name])
+        @list.update(:name => params[:list][:name])
 
         if !params["task"]["name"].empty?
-        @list.tasks << Task.create(params[:task])
+        @list.tasks << Task.create(:name => params[:task][:name])
         end
 
         redirect '/tasks'
