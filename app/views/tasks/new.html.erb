@@ -1,18 +1,31 @@
-<h1>New Task</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .content {
+            padding: 50px 70px 75px 80px;
+            }
+        </style>
+    </head>
 
-<form method="post" action="/tasks">
-    <input type="text" name="name" placeholder="Task Name">
-    <br><br>
+    <body>
+        <div class="container content">
+            <h5>New Task</h5>
+            <form method="post" action="/tasks">
+                <input type="text" name="name" placeholder="Task Name">
+                <br><br>
 
-    <label>Add To An Existing List</label><br>
-    <% @lists.each do |list| %>
-        <% if list.user_id == @user.id %>
-        <input type="checkbox" name="list_id" value="<%=list.id%>"><%=list.name%><br>
-        <% end %>
-    <% end %>
-    <br>
-    
-    <input class="btn btn-primary" type="submit" name="create" value="Create">
-</form>
-<br>
-<a href="/tasks"><button type="button">Go back</button></a>
+                <label>Add To An Existing List</label><br>
+                <% @lists.each do |list| %>
+                    <% if list.user_id == @user.id %>
+                    <input type="checkbox" name="list_id" value="<%=list.id%>"> <%=list.name%><br>
+                    <% end %>
+                <% end %>
+                <br>
+                
+                <input class="btn btn-outline-dark" type="submit" value="Create">
+            </form>
+                
+        </div>
+    </body>
+</html>

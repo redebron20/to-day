@@ -1,16 +1,28 @@
-<h1>Create a New List</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .content {
+            padding: 50px 70px 75px 80px;
+            }
+        </style>
+    </head>
 
-    <form method="post" action="/lists">
-        <label for="name">List Name</label>
-        <input type="text" id="list_name" name="name"><br><br>
+    <body>
+        <div class="container content">
+            <h5>New List</h5>
 
-        <label for="name">Add Your First Task</label>
-        <input type="text" id="task_name" name="task[name]"><br><br>
-
-        <input type="submit" value="Create New List">
-    </form>
-
-    <a href="/tasks"><button type="button">Go back</button></a>
+            <form method="post" action="/lists">
+                <input type="text" id="list_name" name="name" placeholder="List Name"><br><br>
+        
+                <label for="name">Add Your First Task</label><br>
+                <input type="text" id="task_name" name="task[name]" placeholder="Task Name"><br><br>
+        
+                <input class="btn btn-outline-dark" type="submit" value="Create">
+            </form>
+        </div>
+    </body>
+</html>
 
 
     

@@ -1,6 +1,22 @@
-<h1>New Task on <%= @list.name %></h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .content {
+            padding: 50px 70px 75px 80px;
+            }
+        </style>
+    </head>
 
-<form method="post" action="/tasks/new/<%= @list.id %>">
-<input type="text" name="name" placeholder="Task Name">
-<input class="btn btn-primary" type="submit" name="create" value="Create">
-</form>
+    <body>
+        <div class="container content">
+            <h5>New Task on <%= @list.name %></h5>
+
+            <form method="post" action="/tasks/new/<%= @list.id %>">
+                <input type="text" name="name" placeholder="Task Name">
+                <input class="btn btn-outline-dark" type="submit" value="Create">
+            </form>
+                
+        </div>
+    </body>
+</html>

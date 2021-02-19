@@ -1,9 +1,21 @@
-<p>Proceed to delete <%= @task.name %>?</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .content {
+            padding: 50px 70px 75px 80px;
+            }
+        </style>
+    </head>
 
-
-<form method="post" action="/tasks/<%=@task.id%>">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete">
-<form>
-
-<a href="/tasks"><button type="button">Go back</button></a>
+    <body>
+        <div class="container content">
+            <h5>Deleting <mark><%= @task.name %></mark> task</h5>
+            <form method="post" action="/tasks/<%=@task.id%>">
+              <input id="hidden" type="hidden" name="_method" value="delete">
+              <input type="submit" class="btn btn-outline-dark btn-sm" value="Delete">
+              <a href="/tasks"><input type="submit" class="btn btn-outline-dark btn-sm" value="Cancel"></a>
+            </form>
+        </div>
+    </body>
+</html>

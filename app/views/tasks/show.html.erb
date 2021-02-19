@@ -19,10 +19,10 @@
 
     <body>
         <div class="container content">
-            <h1>Good day, <%= @user.username.capitalize %>! </h1>
-            <br><br>
+            <h2>Good day, <%= @user.username.capitalize %>! </h2>
+            <br>
             
-                <h2>Your to-day's lists:</h2>
+                <h4>Your to-day's lists:</h4>
                 <a href="/lists/new"><button type="button" class="btn btn-outline-dark btn-sm">Create A New List</button></a>
                     
                 <div class="list_item">
@@ -31,14 +31,14 @@
                             <li><%= list.name %>
                             <a href="/lists/<%=list.id%>/edit"><i class="bi bi-pencil-square"></i> Edit</a>
                             <a href="/lists/<%=list.id%>/delete"><i class="bi bi-trash"></i> Delete</a>
-                            <a href="tasks/new/<%=list.id%>"><i class="bi bi-plus-square"></i> New Task</a></h4>
+                            <a href="tasks/new/<%=list.id%>"><i class="bi bi-plus-square"></i> Add Task</a></h4>
                             </li>
                             
 
                             <ul>
                                 <%list.tasks.each do |task| %>
                                     <li>
-                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                        <input class="form-check-input me-1" value="" aria-label="...">
                                         <%= task.name %>
                                         <a href="/tasks/<%= task.id %>/edit">Edit</a>
                                         <a href="/tasks/<%= task.id %>/delete">Delete</a>
