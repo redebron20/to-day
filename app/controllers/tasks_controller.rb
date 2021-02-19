@@ -20,6 +20,13 @@ class TasksController < ApplicationController
         redirect '/tasks'
     end
 
+    get '/tasks/new/:id' do
+        redirect_if_not_logged_in
+        @list = List.find_by_id(params[:id])
+        
+        erb :'/tasks/new_on_list'
+    end
+
     # task editing
     get '/tasks/:id/edit' do
         @task = Task.find(params[:id])

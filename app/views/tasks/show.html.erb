@@ -5,7 +5,7 @@
             .content{
                 padding-top: 20px;
                 padding-bottom: 20px;
-                padding-right: 50px;
+                padding-left: 50px;
             }
             .list_item {
                 padding: 20px;
@@ -23,13 +23,15 @@
             <br><br>
             
                 <h2>Your to-day's lists:</h2>
+                <a href="/lists/new"><button type="button" class="btn btn-outline-dark btn-sm">Create A New List</button></a>
                     
                 <div class="list_item">
                         <ul><% @user.lists.all.each do |list| %>
                             <div class="item">
                             <li><%= list.name %>
-                            <a href="/lists/<%=list.id%>/edit">Edit List</a>
-                            <a href="/lists/<%=list.id%>/delete">Add Task</a>
+                            <a href="/lists/<%=list.id%>/edit"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a href="/lists/<%=list.id%>/delete"><i class="bi bi-trash"></i> Delete</a>
+                            <a href="tasks/new/<%=list.id%>"><i class="bi bi-plus-square"></i> New Task</a></h4>
                             </li>
                             
 
@@ -48,7 +50,7 @@
                         <% end %>
                     </ul>
                 </div>
-                    <a href="/lists/new"><button type="button" class="btn btn-outline-dark btn-sm">Create A New List</button></a>
+                    
             
         </div>
     </body>
