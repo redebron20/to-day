@@ -1,14 +1,22 @@
-# to-day
+#to-day
+to-day is a simplified to-do-list application that allows users to list and organize everyday tasks. A user need to sign up by providing a unique username and setting up a password. A registered user is able to create list and add tasks to the list.
 
-to-day is a simple to-do-list app to help you organize your daily tasks
+#Basic funtionality
+>View/create/update/delete list
+>View/create/update/delete task
+>Task checkbox for easy tracking
 
-## Installation
-To get this app running, clone this repo and run bundle install in your terminal, then rake db:migrate, and finally shotgun.
+#Installation
+To get started, you need to run the script below.
 
-```bash
-bundle install
-rake db:migrate
-shotgun
-```
+```$ bundle install
+If you would like to run the server, type the below script
 
-Then navigate to localhost:9393 to try it!
+```$shotgun
+Then type this script into the browser to run local server
+
+```$localhost:9393
+
+#References
+I use the gem Corneal to create the Sinatra skeleton of my project. Corneal
+
