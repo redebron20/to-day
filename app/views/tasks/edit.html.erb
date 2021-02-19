@@ -1,27 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .content {
+            padding: 50px 70px 75px 80px;
+            }
+        </style>
+    </head>
 
+    <body>
+        <div class="container content">
+            <form method="post" action="/tasks/<%=@task.id %>">
+              <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-<h3>Edit "<%= @task.name %>"</h3>
+              <h4>Edit Task Name:</h4>
+              <input type="text" name="task[name]" value="<%=@task.name%>"><br><br>
 
-<form  method="POST" action="/tasks/<%=@task.id %>">
-<input id="hidden" type="hidden" name="_method" value="patch">
-  <label> Task Name: </label>
-  <input type="text" name="name" value="<%=@task.name %>"> </br> 
+              <label> Where should this task go? </label>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="list_id">
+                  <% current_user.lists.each do |list| %>
+                    <option value=<%=list.id %><%= "selected" if list.id==@task.list.id %>><%= list.name %></option>
+                  <% end %>
+                </select>
+                <br>
 
-  <label> Where should this task go? </label>
-  <select name="list_id">
-    <% current_user.lists.each do |list| %>
-      <option value=<%=list.id %> <%= "selected" if list.id==@task.list.id %> ><%= list.name %></option>
-    <% end %>
-  </select>
+                <input type="submit" class="btn btn-outline-dark" value="Update task">
+            </form>
+              <br>
 
-  <br />
+            <form method="post" action="/tasks/<%=@task.id%>">
+              <input id="hidden" type="hidden" name="_method" value="delete">
+              <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete">
+            <form>
 
-  <input class="btn btn-primary" type="submit" value="Update">
-</form>
-
-<br />
-
-<form method="post" action="/tasks/<%=@task.id%>">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input class="btn btn-primary" type="submit" value="Delete">
-<form>
+        </div>
+    </body>
+</html>
