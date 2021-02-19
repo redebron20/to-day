@@ -2,35 +2,54 @@
 <html>
     <head>
         <style>
-
+            .content{
+                padding-top: 20px;
+                padding-bottom: 20px;
+                padding-right: 50px;
+            }
+            .list_item {
+                padding: 20px;
+            }
+            .item {
+                padding: 10px;
+            }
         
         </style>
     </head>
 
     <body>
-        <div class="container">
-            <div class="content"
-            <h1>Hello <%= @user.username.capitalize %>! </h1>
-
-            <a href="/lists/new"><button type="button">Create A New List</button></a>
+        <div class="container content">
+            <h1>Good day, <%= @user.username.capitalize %>! </h1>
             <br><br>
             
                 <h2>Your to-day's lists:</h2>
-                    <% @user.lists.all.each do |list| %>
-                        <h2><%= list.name %></h2>
-                        <a href="/lists/<%=list.id%>/edit">Edit List</a>
-                        <a href="/lists/<%=list.id%>/delete">Delete List</a>
-            
-                        <ol>
-                            <%list.tasks.each do |task| %>                
-                                <li><%= task.name %></li>
-                                <a href="/tasks/<%= task.id %>/edit">Edit</a>
-                                <a href="/tasks/<%= task.id %>/delete">Delete</a>
-                                
-                            <% end %>
-                        </ol>
+                    
+                <div class="list_item">
+                        <ul><% @user.lists.all.each do |list| %>
+                            <div class="item">
+                            <li><%= list.name %>
+                            <a href="/lists/<%=list.id%>/edit">Edit List</a>
+                            <a href="/lists/<%=list.id%>/delete">Add Task</a>
+                            </li>
+                            
+
+                            <ul>
+                                <%list.tasks.each do |task| %>
+                                    <li>
+                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                        <%= task.name %>
+                                        <a href="/tasks/<%= task.id %>/edit">Edit</a>
+                                        <a href="/tasks/<%= task.id %>/delete">Delete</a>
+                                    </li>
+                                <% end %>
+                               
+                            </ul>
+                            </div>
                         <% end %>
-            </div>
+                    </ul>
+                </div>
+                    <a href="/lists/new"><button type="button" class="btn btn-outline-dark btn-sm">Create A New List</button></a>
+            
         </div>
     </body>
 </html>
