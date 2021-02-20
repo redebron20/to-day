@@ -11,7 +11,7 @@ class ListsController < ApplicationController
         task = list.tasks.new(:name => params[:task][:name])
         task.save
 
-        redirect '/tasks'
+        redirect '/tasks' 
     end
 
     get '/lists/:id/edit' do

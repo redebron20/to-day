@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
     patch '/tasks/:id' do
         @task = Task.find(params[:id])
-        @task.update(:name => params[:task][:name])
+        @task.update(:name => params[:task][:name], :list_id => params[:list_id])
         redirect '/tasks'
     end
 
