@@ -11,7 +11,13 @@ class ListsController < ApplicationController
         task = list.tasks.new(:name => params[:task][:name])
         task.save
 
-        redirect '/tasks' 
+        if list.valid?
+            flash[:success] = "List created!"
+            redirect '/tasks'
+        else
+            flash[:error] = "List name can't be blank"
+            redirect '/lists/new'
+        end
     end
 
     get '/lists/:id/edit' do
