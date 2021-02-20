@@ -15,7 +15,7 @@ class ListsController < ApplicationController
             flash[:success] = "List created!"
             redirect '/tasks'
         else
-            flash[:error] = "List name can't be blank"
+            flash[:error] = "List invalid. Please try again."
             redirect '/lists/new'
         end
     end

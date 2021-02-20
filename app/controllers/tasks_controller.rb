@@ -16,8 +16,15 @@ class TasksController < ApplicationController
     end
 
     post '/tasks' do
-        Task.create(:name => params[:name], :list_id => params[:list_id])
-        redirect '/tasks'
+        task = Task.create(:name => params[:name], :list_id => params[:list_id])
+
+        if task.valid?
+            flash[:success] = "Task created!"
+            redirect '/tasks'
+        else
+            flash[:error] = task.errors.full_messages.to_sentence
+            redirect '/tasks/new'
+        end
     end
 
     get '/tasks/new/:id' do

@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do
-        @user = User.find_by(:username => params["user"]["username"])
-        if @user && @user.authenticate(params["user"]["password"])
-          session["user_id"] = @user.id
+        user = User.find_by(:username => params["user"]["username"])
+        if user && user.authenticate(params["user"]["password"])
+          session["user_id"] = user.id
           flash[:success] = "Successfully logged in!"
           redirect "/tasks"
         else
-          flash[:error] = "Invalid credentials"
+          flash[:error] = user.errors.full_messages.to_sentence
           redirect "/login"
         end
     end
