@@ -1,4 +1,7 @@
 class ListsController < ApplicationController
+    before ("/lists/*") do
+        redirect_if_not_logged_in
+    end
 
     get '/lists/new' do
         redirect_if_not_logged_in
@@ -21,13 +24,17 @@ class ListsController < ApplicationController
 
     patch '/lists/:id' do
        
-        @list = List.find(params[:id])
-        @list.update(:name => params[:list][:name])
+        list = List.find(params[:id])
+        
+        if current_user == list.user
+            list.update(:name => params[:list][:name])
 
-        if !params["task"]["name"].empty?
-        @list.tasks << Task.create(:name => params[:task][:name])
+            if !params["task"]["name"].empty?
+            list.tasks << Task.create(:name => params[:task][:name])
+            end
+        else
+            flash[:error] = "Not authorize to edit the list."
         end
-
         redirect '/tasks'
     end
 

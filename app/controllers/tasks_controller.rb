@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
-  
-    get '/tasks' do
+    before ("/tasks/*") do
         redirect_if_not_logged_in
+    end
+
+    get '/tasks' do
         @user = current_user
         @lists = @user.lists
         @profile = current_profile
@@ -10,7 +12,6 @@ class TasksController < ApplicationController
 
     # Builds new task associated with the LIST ID
     get '/tasks/new' do
-        redirect_if_not_logged_in
         @user = current_user
         @lists = List.all
         erb :'tasks/new.html'
@@ -29,7 +30,6 @@ class TasksController < ApplicationController
     end
 
     get '/tasks/new/:id' do
-        redirect_if_not_logged_in
         @list = List.find_by_id(params[:id])
 
         erb :'/tasks/new_on_list'
@@ -49,8 +49,8 @@ class TasksController < ApplicationController
     end
 
     patch '/tasks/:id' do
-        @task = Task.find(params[:id])
-        @task.update(:name => params[:task][:name], :list_id => params[:list_id])
+        task = Task.find(params[:id])
+        task.update(:name => params[:task][:name], :list_id => params[:list_id])
         redirect '/tasks'
     end
 
@@ -60,8 +60,8 @@ class TasksController < ApplicationController
     end
 
     delete '/tasks/:id' do 
-        @task = Task.find(params[:id])
-        @task.destroy
+        task = Task.find(params[:id])
+        task.destroy
         redirect '/tasks'
       end
 
