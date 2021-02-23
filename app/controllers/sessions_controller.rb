@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
           flash[:success] = "Successfully logged in!"
           redirect "/tasks"
         else
-          flash[:error] = user.errors.full_messages.to_sentence
+          flash[:error] = "Invalid credentials. Please try again!"
           redirect "/login"
         end
     end

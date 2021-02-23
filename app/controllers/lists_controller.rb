@@ -10,20 +10,12 @@ class ListsController < ApplicationController
         list = @user.lists.create(:name => params[:name])
         task = list.tasks.new(:name => params[:task][:name])
         task.save
-
-        if list.valid?
-            flash[:success] = "List created!"
-            redirect '/tasks'
-        else
-            flash[:error] = "List invalid. Please try again."
-            redirect '/lists/new'
-        end
+        redirect '/tasks'
     end
 
     get '/lists/:id/edit' do
         redirect_if_not_logged_in
         @list = List.find(params[:id])
-        @task = Task.find(params[:id])
         erb :'lists/edit.html'
     end
 

@@ -13,9 +13,9 @@
             <h5>Deleting <mark><%= @task.name %></mark> task</h5>
             <form method="post" action="/tasks/<%=@task.id%>">
               <input id="hidden" type="hidden" name="_method" value="delete">
-              <input type="submit" class="btn btn-outline-dark btn-sm" value="Delete">
-              <a href="/tasks"><input type="submit" class="btn btn-outline-dark btn-sm" value="Cancel"></a>
+              <input type="submit" class="btn btn-outline-danger btn-sm" value="Delete">
             </form>
+            <a href="/tasks"><input type="submit" class="btn btn-outline-dark btn-sm" value="Cancel"></a>
         </div>
     </body>
 </html>
