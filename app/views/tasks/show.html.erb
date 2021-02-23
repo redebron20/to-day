@@ -39,8 +39,8 @@
     <body>
         <div class="container content">
             <h2>Good day, <%= @user.username.capitalize %></h2>
-            <a href="/profile/edit">Edit Profile</a><br><br>
-
+            <a href="/profile/<%=current_profile.id%>/edit">Edit Profile</a><br><br>
+            
             <div class="container list">
                 <h4>Your to-day's lists:</h4>
                 <a href="/lists/new"><button type="button" class="btn btn-outline-dark btn-sm">Create A New List</button></a>

@@ -5,6 +5,7 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 use Rack::MethodOverride
+use ProfileController 
 use ListsController 
 use TasksController
 use SessionsController  

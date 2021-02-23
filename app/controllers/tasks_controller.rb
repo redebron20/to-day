@@ -4,6 +4,7 @@ class TasksController < ApplicationController
         redirect_if_not_logged_in
         @user = current_user
         @lists = @user.lists
+        @profile = current_profile
         erb :'tasks/show.html'
     end
 
