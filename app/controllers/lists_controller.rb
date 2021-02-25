@@ -12,14 +12,18 @@ class ListsController < ApplicationController
 
     get '/lists/new' do
         redirect_if_not_logged_in
-        erb :'lists/new.html'
+        erb :'lists/new_list.html'
     end
 
     post '/lists' do
-        user = current_user
-        list = user.lists.create(:name => params[:name])
-        task = list.tasks.new(:name => params[:task][:name])
-        task.save
+        if current_user
+            user = current_user
+            list = user.lists.create(:name => params[:name])
+            task = list.tasks.new(:name => params[:task][:name])
+            task.save
+        else
+            flash[:error] = "Unauthorize to create list."
+        end
         redirect '/lists'
     end
 

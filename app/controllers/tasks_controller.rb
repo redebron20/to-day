@@ -7,19 +7,22 @@ class TasksController < ApplicationController
     get '/tasks/new' do
         @user = current_user
         @lists = List.all
-        erb :'tasks/new.html'
+        erb :'tasks/new_task.html'
     end
 
     post '/tasks' do
+        if current_user
         task = Task.create(:name => params[:name], :list_id => params[:list_id])
-
-        if task.valid?
-            flash[:success] = "Task created!"
-            redirect '/lists'
+            if task.valid?
+                flash[:success] = "Task created!"
+            else
+                flash[:error] = task.errors.full_messages.to_sentence
+                redirect '/tasks/new'
+            end
         else
-            flash[:error] = task.errors.full_messages.to_sentence
-            redirect '/tasks/new'
+            flash[:error] = "Unauthorize to create list."
         end
+        redirect '/lists'
     end
       
     # task editing
