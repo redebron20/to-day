@@ -2,14 +2,22 @@
   font-family: sofia-pro,Roboto,Helvetica,Arial,sans-serif;
   box-sizing: border-box;
   font-weight: 300;
+  max-width: 900px;
+  margin: 0px auto;
 }
 
- {
-  line-height: 28px;
-  color: #888888;
-  font-weight: 300;
-  letter-spacing: 0.2px;
-  width: 100%;
-  max-width: 350px;
-  margin: 0px auto;
+.content footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.alert {
+  padding: 30px
+}
+
+.error {
+  background-color: #F8F8FF; 
+  font-weight: bold;
+  padding: 20px;
+  max-width: 600px;
 }
