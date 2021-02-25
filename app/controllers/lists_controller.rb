@@ -3,6 +3,13 @@ class ListsController < ApplicationController
         redirect_if_not_logged_in
     end
 
+    get '/lists' do
+        @user = current_user
+        @lists = @user.lists
+        @profile = current_profile
+        erb :'lists/show.html'
+    end
+
     get '/lists/new' do
         redirect_if_not_logged_in
         erb :'lists/new.html'

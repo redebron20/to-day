@@ -3,12 +3,7 @@ class TasksController < ApplicationController
         redirect_if_not_logged_in
     end
 
-    get '/tasks' do
-        @user = current_user
-        @lists = @user.lists
-        @profile = current_profile
-        erb :'tasks/show.html'
-    end
+
 
     # Builds new task associated with the LIST ID
     get '/tasks/new' do
