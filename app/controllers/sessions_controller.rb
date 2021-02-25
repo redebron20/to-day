@@ -6,13 +6,14 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do
+      binding.pry
         user = User.find_by(:username => params["user"]["username"])
         if user && user.authenticate(params["user"]["password"])
           session["user_id"] = user.id
           flash[:success] = "Successfully logged in!"
-          redirect "/tasks"
+          redirect "/lists"
         else
-          flash[:error] = "Invalid credentials. Please try again!"
+          flash[:error] = "Invalid credentials. Please try again."
           redirect "/login"
         end
     end
