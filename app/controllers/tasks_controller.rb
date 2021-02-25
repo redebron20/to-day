@@ -31,7 +31,11 @@ class TasksController < ApplicationController
 
     patch '/tasks/:id' do
         task = Task.find(params[:id])
-        task.update(:name => params[:task][:name], :list_id => params[:list_id])
+        if current_user == task.list.user
+            task.update(:name => params[:task][:name], :list_id => params[:list_id])
+        else
+            flash[:error] = "Unauthorize to edit task."
+        end
         redirect '/lists'
     end
 
@@ -42,7 +46,11 @@ class TasksController < ApplicationController
 
     delete '/tasks/:id' do 
         task = Task.find(params[:id])
-        task.destroy
+        if current_user == task.list.user
+            task.destroy
+        else
+            flash[:error] = "Unauthorize to delete task."
+        end
         redirect '/lists'
       end
 
