@@ -3,8 +3,6 @@ class TasksController < ApplicationController
         redirect_if_not_logged_in
     end
 
-
-
     # Builds new task associated with the LIST ID
     get '/tasks/new' do
         @user = current_user
@@ -17,20 +15,20 @@ class TasksController < ApplicationController
 
         if task.valid?
             flash[:success] = "Task created!"
-            redirect '/tasks'
+            redirect '/lists'
         else
             flash[:error] = task.errors.full_messages.to_sentence
             redirect '/tasks/new'
         end
     end
 
-    get '/tasks/new/:id' do
+    get '/lists/:id/tasks/new' do
         @list = List.find_by_id(params[:id])
 
         erb :'/tasks/new_on_list'
     end
 
-    post '/tasks/new/:id' do
+    post '/lists/:id/tasks/new' do
         @list = List.find_by_id(params[:id])
         Task.create(:name => params[:name], :list_id => params[:id])
         redirect '/tasks'
