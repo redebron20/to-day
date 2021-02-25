@@ -20,7 +20,7 @@ class ListsController < ApplicationController
         list = @user.lists.create(:name => params[:name])
         task = list.tasks.new(:name => params[:task][:name])
         task.save
-        redirect '/tasks'
+        redirect '/lists'
     end
 
     get '/lists/:id/edit' do
@@ -42,22 +42,22 @@ class ListsController < ApplicationController
         else
             flash[:error] = "Not authorize to edit the list."
         end
-        redirect '/tasks'
+        redirect '/lists'
     end
 
     #adding new task under list
     get '/lists/:id/tasks/new' do
         @list = List.find_by_id(params[:id])
-
-        erb :'/tasks/new_on_list'
+        erb :'/lists/new_task'
     end
 
-    post '/lists/:id/tasks/new' do
+    post '/lists/:id' do
         @list = List.find_by_id(params[:id])
-        Task.create(:name => params[:name], :list_id => params[:id])
+        Task.create(:name => params[task][:name], :list_id => params[:id])
         redirect '/lists'
     end
 
+    #lists deletion
     get '/lists/:id/delete' do
         @list = List.find_by_id(params[:id])
         erb :'lists/delete.html'
@@ -66,7 +66,7 @@ class ListsController < ApplicationController
     delete '/lists/:id' do 
         @list = List.find_by_id(params[:id])
         @list.destroy
-        redirect '/tasks'
+        redirect '/lists'
     end
 
 end

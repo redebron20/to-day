@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     patch '/tasks/:id' do
         task = Task.find(params[:id])
         task.update(:name => params[:task][:name], :list_id => params[:list_id])
-        redirect '/tasks'
+        redirect '/lists'
     end
 
     get '/tasks/:id/delete' do
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
     delete '/tasks/:id' do 
         task = Task.find(params[:id])
         task.destroy
-        redirect '/tasks'
+        redirect '/lists'
       end
 
 end

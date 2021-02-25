@@ -12,8 +12,8 @@
         <div class="container content">
             <h5>New Task on <%= @list.name %></h5>
 
-            <form method="post" action="/lists/:id/tasks/new/<%= @list.id %>">
-                <input type="text" name="name" placeholder="Task Name">
+            <form method="post" action="/lists/<%= @list.id %>/tasks/new">
+                <input type="text" name="task[name]" placeholder="Task Name">
                 <input class="btn btn-outline-dark" type="submit" value="Create">
             </form>
                 
