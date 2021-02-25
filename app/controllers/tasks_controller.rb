@@ -21,18 +21,6 @@ class TasksController < ApplicationController
             redirect '/tasks/new'
         end
     end
-
-    get '/lists/:id/tasks/new' do
-        @list = List.find_by_id(params[:id])
-
-        erb :'/tasks/new_on_list'
-    end
-
-    post '/lists/:id/tasks/new' do
-        @list = List.find_by_id(params[:id])
-        Task.create(:name => params[:name], :list_id => params[:id])
-        redirect '/tasks'
-    end
       
     # task editing
     get '/tasks/:id/edit' do
