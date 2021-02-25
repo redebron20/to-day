@@ -49,7 +49,7 @@ class ListsController < ApplicationController
     #adding new task under list
     get '/lists/:id/tasks/new' do
         @list = List.find_by_id(params[:id])
-        erb :'/lists/new_task'
+        erb :'/lists/new_task.html'
     end
 
     post '/lists/:id' do

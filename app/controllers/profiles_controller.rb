@@ -5,12 +5,12 @@ class ProfilesController < ApplicationController
 
     get '/profiles/:id' do
         if current_profile == Profile.find(params[:id])
-            redirect '/profile'
+            erb :'profiles/profile.html'
         end
     end
 
     get '/profiles/:id/edit' do
-        erb :'profile/edit.html'
+        erb :'profiles/edit.html'
     end
 
     patch '/profiles/:id' do

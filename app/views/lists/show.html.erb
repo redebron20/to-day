@@ -37,8 +37,8 @@
 
     <body>
         <div class="container content">
-            <h2>Good day, <%= @user.username.capitalize %></h2>
-            <a href="/profile/<%=current_profile.id%>/edit">Edit Profile</a><br><br>
+            <h2>Good day, <%= current_profile.name.capitalize %>!</h2>
+            <a href="/profiles/<%=current_profile.id%>/edit">Edit Profile</a><br><br>
             
             <div class="container list">
                 <h4>Your to-day's lists:</h4>

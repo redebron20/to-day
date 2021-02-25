@@ -10,14 +10,14 @@
 
     <body>
         <div class="container content">
-            <form method="post" action="/profile/<%=current_profile.id%>">
+            <form method="post" action="/profiles/<%=current_profile.id%>">
               <input id="hidden" type="hidden" name="_method" value="PATCH">
 
               <h4>Edit Profile Name:</h4>
               <input type="text" name="profile_name" value="<%=current_user.username%>"><br><br>
 
-              <label>About you:</label>   
-              <input type="text" name="profile_bio" value="<%=current_profile.bio%>">
+              <label>About you:</label></br>  
+              <textarea name="profile_bio" id="profile_bio" value="<%=current_profile.bio%>"></textarea>
               <br>
 
               <br>
