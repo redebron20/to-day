@@ -16,13 +16,14 @@ class ListsController < ApplicationController
     end
 
     post '/lists' do
-        @user = current_user
-        list = @user.lists.create(:name => params[:name])
+        user = current_user
+        list = user.lists.create(:name => params[:name])
         task = list.tasks.new(:name => params[:task][:name])
         task.save
         redirect '/lists'
     end
 
+    #edit lists and add new task under list
     get '/lists/:id/edit' do
         redirect_if_not_logged_in
         @list = List.find(params[:id])
@@ -40,7 +41,7 @@ class ListsController < ApplicationController
             list.tasks << Task.create(:name => params[:task][:name])
             end
         else
-            flash[:error] = "Not authorize to edit the list."
+            flash[:error] = "Unauthorize to edit list."
         end
         redirect '/lists'
     end
@@ -52,7 +53,7 @@ class ListsController < ApplicationController
     end
 
     post '/lists/:id' do
-        @list = List.find_by_id(params[:id])
+        list = List.find_by_id(params[:id])
         Task.create(:name => params[task][:name], :list_id => params[:id])
         redirect '/lists'
     end
@@ -64,8 +65,13 @@ class ListsController < ApplicationController
     end
     
     delete '/lists/:id' do 
-        @list = List.find_by_id(params[:id])
-        @list.destroy
+        list = List.find_by_id(params[:id])
+
+        if current_user == list.user
+            list.destroy
+        else
+            flash[:error] = "Unauthorize to delete list."
+        end
         redirect '/lists'
     end
 
