@@ -53,17 +53,7 @@ class ListsController < ApplicationController
         redirect '/lists'
     end
 
-    # adding new task under list
-    # get '/lists/:id/tasks/new' do
-    #     @list = List.find_by_id(params[:id])
-    #     erb :'/lists/new_task.html'
-    # end
-
-    # post '/lists/:id' do
-    #     list = List.find_by_id(params[:id])
-    #     Task.create(:name => params[task][:name], :list_id => params[:id])
-    #     redirect '/lists'
-    # end
+    
 
     #lists deletion
     get '/lists/:id/delete' do
