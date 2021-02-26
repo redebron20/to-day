@@ -40,12 +40,10 @@
     <div class="container .col-md-6">
       <div class="content" style="background-image: url('/img/dot-grid.png')">
 
-      <% if flash[:alert] %>
-        <div class="alert"><%= flash[:alert] %></div>
-        <%elsif flash[:message]%>
-        <div class="message"><%= flash[:message] %></div>
-      <%elsif flash[:notice]%>
-        <div class="notice"><%= flash[:notice] %></div>
+      <% if flash[:success] %>
+        <p class="success"><%= flash[:success] %></p>
+        <%else flash[:error]%>
+        <p class="error"><%= flash[:error] %></p>
       <% end %>
 
       <%= yield %>

@@ -54,7 +54,6 @@ class ListsController < ApplicationController
     end
 
     
-
     #lists deletion
     get '/lists/:id/delete' do
         @list = List.find_by_id(params[:id])
