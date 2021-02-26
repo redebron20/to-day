@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
     # GET: /sessions
     get '/login' do
-        redirect '/tasks' if logged_in?
+        redirect_if_not_logged_in
         erb :'sessions/login.html'
     end
 

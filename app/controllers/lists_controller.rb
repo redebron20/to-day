@@ -39,10 +39,13 @@ class ListsController < ApplicationController
         list = List.find(params[:id])
         
         if current_user == list.user
-            list.update(:name => params[:list][:name])
-
-            if !params["task"]["name"].empty?
-            list.tasks << Task.create(:name => params[:task][:name])
+            if list.update(:name => params[:list][:name])           
+                if !params["task"]["name"].empty?
+                    list.tasks.build(:name => params[:task][:name]).tap{|task| task.save}
+                end
+            else
+                flash[:error] = list.errors.full_messages.to_sentence
+                redirect "/lists/#{list.id}/edit"
             end
         else
             flash[:error] = "Unauthorize to edit list."
@@ -50,22 +53,27 @@ class ListsController < ApplicationController
         redirect '/lists'
     end
 
-    #adding new task under list
-    get '/lists/:id/tasks/new' do
-        @list = List.find_by_id(params[:id])
-        erb :'/lists/new_task.html'
-    end
+    # adding new task under list
+    # get '/lists/:id/tasks/new' do
+    #     @list = List.find_by_id(params[:id])
+    #     erb :'/lists/new_task.html'
+    # end
 
-    post '/lists/:id' do
-        list = List.find_by_id(params[:id])
-        Task.create(:name => params[task][:name], :list_id => params[:id])
-        redirect '/lists'
-    end
+    # post '/lists/:id' do
+    #     list = List.find_by_id(params[:id])
+    #     Task.create(:name => params[task][:name], :list_id => params[:id])
+    #     redirect '/lists'
+    # end
 
     #lists deletion
     get '/lists/:id/delete' do
         @list = List.find_by_id(params[:id])
-        erb :'lists/delete.html'
+        if current_user == @list.user
+            erb :'lists/delete.html'
+        else
+            flash[:error] = "Unauthorize to delete list."
+            redirect '/lists'
+        end
     end
     
     delete '/lists/:id' do 
